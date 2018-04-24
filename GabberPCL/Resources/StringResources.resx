@@ -209,7 +209,7 @@
         <value>Gabber uses topics to structure and capture audio conversations, which are used on the website to represent who was present and what was discussed.</value>
     </data>
     <data name="about.ui.link" xml:space="preserve">
-        <value>Visit Gabber Website: https://gabber.audio</value>
+        <value>Visit the Gabber Website: https://ifrc.gabber.audio</value>
     </data>
     
     <!-- PARTICIPANTS SCREEN -->
