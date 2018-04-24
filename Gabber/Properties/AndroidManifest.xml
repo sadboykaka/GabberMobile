@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="uk.ac.ncl.openlab.gabber" android:versionName="0.0.4-alpha" android:versionCode="4">
-	<application android:theme="@style/MyTheme" android:label="Gabber" android:icon="@mipmap/ic_launcher"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="uk.ac.ncl.openlab.ifrc.gabber" android:versionName="0.0.1-alpha" android:versionCode="1">
+	<application android:theme="@style/MyTheme" android:label="Gabber IFRC" android:icon="@mipmap/ic_launcher"></application>
 	<uses-sdk android:minSdkVersion="10" />
 	<uses-permission android:name="android.permission.RECORD_AUDIO" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
