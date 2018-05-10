@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Foundation;
 using Gabber.iOS.ViewSources;
 using GabberPCL;
 using GabberPCL.Models;
@@ -17,6 +18,9 @@ namespace Gabber.iOS
 
 		public SessionsViewController (IntPtr handle) : base (handle) {}
 
+        [Action("UnwindToSessionsViewController:")]
+        public void UnwindToSessionsViewController(UIStoryboardSegue segue) {}
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -26,7 +30,7 @@ namespace Gabber.iOS
             Title = StringResources.common_menu_gabbers;
 
             SessionsUpload.Layer.BorderWidth = 1.0f;
-            SessionsUpload.Layer.BorderColor = UIColor.FromRGB(.38f, .166f, .154f).CGColor;
+            SessionsUpload.Layer.BorderColor = UIColor.FromRGB(.43f, .80f, .79f).CGColor;
             SessionsUpload.SetTitle(StringResources.sessions_ui_submit_button, UIControlState.Normal);
         }
 
@@ -35,6 +39,18 @@ namespace Gabber.iOS
             UpdateSessionsSource();
             base.ViewDidAppear(animated);
             TabBarController.Title = StringResources.sessions_ui_title;
+
+            if (Sessions.Count == 1)
+            {
+                var prefs = NSUserDefaults.StandardUserDefaults;
+                if (!prefs.BoolForKey("FIRST_RECORDING_DIALOG"))
+                {
+                    prefs.SetBool(true, "FIRST_RECORDING_DIALOG");
+                    PresentViewController(new Helpers.MessageDialog().BuildErrorMessageDialog(
+                        StringResources.debriefing_ui_page_first_title,
+                        StringResources.debriefing_ui_page_first_content), true, null);
+                }
+            }
 		}
 
         // Index is optional such that the method could be used onSelected(item)
@@ -85,8 +101,8 @@ namespace Gabber.iOS
             Sessions = Queries.AllNotUploadedInterviewSessionsForActiveUser();
             // Must set this locally to access RemoveSession ...
             SessionsViewSource = new SessionsCollectionViewSource(Sessions);
+            SessionsViewSource.SelectSession += (int s) => UploadSessions(s, false);
             SessionsCollectionView.Source = SessionsViewSource;
-
             ShowHideInstructions();
         }
 

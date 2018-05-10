@@ -19,19 +19,11 @@ namespace Gabber.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView SessionIsUploaded { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIActivityIndicatorView SessionIsUploadedIndicator { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SessionLength { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel SessionNumTopics { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -41,16 +33,15 @@ namespace Gabber.iOS
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel SessionProjectTitle { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIProgressView UploadingSessionProgress { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (SessionCreateDate != null) {
                 SessionCreateDate.Dispose ();
                 SessionCreateDate = null;
-            }
-
-            if (SessionIsUploaded != null) {
-                SessionIsUploaded.Dispose ();
-                SessionIsUploaded = null;
             }
 
             if (SessionIsUploadedIndicator != null) {
@@ -63,11 +54,6 @@ namespace Gabber.iOS
                 SessionLength = null;
             }
 
-            if (SessionNumTopics != null) {
-                SessionNumTopics.Dispose ();
-                SessionNumTopics = null;
-            }
-
             if (SessionParticipants != null) {
                 SessionParticipants.Dispose ();
                 SessionParticipants = null;
@@ -76,6 +62,11 @@ namespace Gabber.iOS
             if (SessionProjectTitle != null) {
                 SessionProjectTitle.Dispose ();
                 SessionProjectTitle = null;
+            }
+
+            if (UploadingSessionProgress != null) {
+                UploadingSessionProgress.Dispose ();
+                UploadingSessionProgress = null;
             }
         }
     }
