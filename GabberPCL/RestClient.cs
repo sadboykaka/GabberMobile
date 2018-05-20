@@ -83,7 +83,7 @@ namespace GabberPCL
 		{
             _client = new HttpClient
             {
-                BaseAddress = new Uri("https://api.ifrc.gabber.audio")
+                BaseAddress = new Uri(Config.API_ENDPOINT)
             };
         }
 
@@ -182,7 +182,7 @@ namespace GabberPCL
             return _response;
         }
 
-		// As this deals with reading files from platform specific paths, 
+		// As this deals with reading files from platform specific paths,
 		// then we must implement this on each specific platform.
         public async Task<bool> Upload(InterviewSession interviewSession)
 		{
@@ -212,7 +212,7 @@ namespace GabberPCL
 
         public async Task<List<Project>> GetProjects(Action<string> errorCallback)
 		{
-            _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Session.Token.Access);   
+            _client.DefaultRequestHeaders.Add("Authorization", "Bearer " + Session.Token.Access);
 
             try
             {

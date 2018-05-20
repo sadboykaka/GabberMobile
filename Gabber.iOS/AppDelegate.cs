@@ -26,6 +26,11 @@ namespace Gabber.iOS
             {
                 Window.RootViewController = UIStoryboard.FromName("Main", null).InstantiateViewController("Onboarding");
             }
+
+            // Create here as this method will always get run when opening the app.
+			Firebase.CrashReporting.CrashReporting.Configure();
+			Firebase.Core.App.Configure();
+
             // Used by the PCL for database interactions so must be defined early.
             Session.PrivatePath = new PrivatePath();
             // Register the implementation to the global interface within the PCL.
@@ -63,6 +68,16 @@ namespace Gabber.iOS
         {
             // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
         }
+
+		public override bool ContinueUserActivity(UIApplication a, NSUserActivity ua, UIApplicationRestorationHandler h) => OpenVerify(ua.WebPageUrl);
+		public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options) => OpenVerify(url);
+        
+		bool OpenVerify(NSUrl url)
+		{
+			if (!string.IsNullOrEmpty(NSUserDefaults.StandardUserDefaults.StringForKey("tokens"))) return true;
+			NSUserDefaults.StandardUserDefaults.SetURL(url, "VERIFY_URL");
+			Window.RootViewController = UIStoryboard.FromName("Main", null).InstantiateViewController("RegisterVerifying");
+			return true;
+		}
     }
 }
-
