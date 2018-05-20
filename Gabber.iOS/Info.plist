@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>Gabber</string>
+	<string>Gabber IFRC</string>
 	<key>CFBundleIdentifier</key>
-	<string>uk.ac.ncl.openlab.gabber</string>
+	<string>uk.ac.ncl.openlab.ifrc.gabber</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
@@ -32,8 +32,8 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Microphone access is required to record a Gabber</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1.2</string>
+	<string>0.0.1</string>
 	<key>CFBundleVersion</key>
-	<string>0.1.2</string>
+	<string>0.0.1</string>
 </dict>
 </plist>

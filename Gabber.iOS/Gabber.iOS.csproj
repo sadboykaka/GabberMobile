@@ -31,8 +31,9 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <MtouchVerbosity></MtouchVerbosity>
-    <CodesignProvision>VS: uk.ac.ncl.openlab.gabber Development</CodesignProvision>
+    <CodesignProvision>VS: uk.ac.ncl.openlab.ifrc.gabber Development</CodesignProvision>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchExtraArgs>--registrar:static</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
@@ -48,7 +49,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchVerbosity></MtouchVerbosity>
-    <CodesignProvision>VS: uk.ac.ncl.openlab.gabber Development</CodesignProvision>
+    <CodesignProvision>VS: uk.ac.ncl.openlab.ifrc.gabber Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>pdbonly</DebugType>
@@ -63,7 +64,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchVerbosity></MtouchVerbosity>
-    <CodesignProvision>VS: uk.ac.ncl.openlab.gabber Development</CodesignProvision>
+    <CodesignProvision>VS: uk.ac.ncl.openlab.ifrc.gabber Development</CodesignProvision>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -86,7 +87,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchVerbosity></MtouchVerbosity>
-    <CodesignProvision>VS: uk.ac.ncl.openlab.gabber Development</CodesignProvision>
+    <CodesignProvision>VS: uk.ac.ncl.openlab.ifrc.gabber Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
