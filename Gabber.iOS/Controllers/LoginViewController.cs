@@ -33,7 +33,7 @@ namespace Gabber.iOS
 		bool NavigateNext(UITextField _field)
         {
             // If 'Next' on the email field is pressed, then
-            // make the password field the focus, otherwise 
+            // make the password field the focus, otherwise
             // the 'Go' button was pressed, so authenticate.
             if (_field.Tag == 0)
             {
@@ -41,7 +41,6 @@ namespace Gabber.iOS
             }
             else
             {
-                _field.ResignFirstResponder();
                 Authenticate(LoginUIButton);
             }
             return false;
@@ -64,8 +63,11 @@ namespace Gabber.iOS
             {
                 ErrorMessageDialog(StringResources.common_ui_forms_email_validate_invalid);
             }
-            else 
+            else
             {
+                PasswordTextField.BecomeFirstResponder();
+                PasswordTextField.ResignFirstResponder();
+
                 LoginUIButton.Enabled = false;
                 var client = new RestClient();
                 LoginActivityIndicator.StartAnimating();
@@ -78,7 +80,7 @@ namespace Gabber.iOS
                 if (response.Meta.Messages.Count > 0)
                 {
                     Logger.LOG_EVENT_WITH_ACTION("LOGIN", "ERROR");
-                    // Only show the first error as there 
+                    // Only show the first error as there
                     var err = StringResources.ResourceManager.GetString($"login.api.error.{response.Meta.Messages[0]}");
                     ErrorMessageDialog(err);
                 }
