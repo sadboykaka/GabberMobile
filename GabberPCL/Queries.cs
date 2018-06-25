@@ -21,8 +21,11 @@ namespace GabberPCL
             Session.Connection.DeleteAll<Project>();
             foreach (var p in _projects)
             {
-                Session.Connection.InsertOrReplace(p);
+                Session.Connection.InsertOrReplace(p.Creator);
+                Session.Connection.InsertOrReplace(p.Organisation);
                 Session.Connection.InsertOrReplaceAllWithChildren(p.Prompts);
+                Session.Connection.InsertOrReplace(p);
+                Session.Connection.InsertOrReplaceAllWithChildren(p.Members);
             }
         }
 
@@ -54,7 +57,7 @@ namespace GabberPCL
 
         public static User FindOrInsertUser(User user, string email)
         {
-            var usr = Session.Connection.Table<User>().Where(u => u.Email == email).FirstOrDefault();
+            var usr = UserByEmail(email);
 
             if (usr == null)
             {

@@ -215,6 +215,12 @@ namespace GabberPCL.Resources {
             }
         }
         
+        public static string register_ui_terms_label {
+            get {
+                return ResourceManager.GetString("register.ui.terms.label", resourceCulture);
+            }
+        }
+        
         public static string register_ui_submit_button {
             get {
                 return ResourceManager.GetString("register.ui.submit.button", resourceCulture);
@@ -446,6 +452,186 @@ namespace GabberPCL.Resources {
         public static string participants_ui_dialog_add_negative {
             get {
                 return ResourceManager.GetString("participants.ui.dialog.add.negative", resourceCulture);
+            }
+        }
+        
+        public static string consent_research_toolbar_title {
+            get {
+                return ResourceManager.GetString("consent.research.toolbar.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_research_submit {
+            get {
+                return ResourceManager.GetString("consent.research.submit", resourceCulture);
+            }
+        }
+        
+        public static string consent_research_title {
+            get {
+                return ResourceManager.GetString("consent.research.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_research_body {
+            get {
+                return ResourceManager.GetString("consent.research.body", resourceCulture);
+            }
+        }
+        
+        public static string consent_research_form {
+            get {
+                return ResourceManager.GetString("consent.research.form", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_toolbar_title {
+            get {
+                return ResourceManager.GetString("consent.gabber.toolbar.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_submit {
+            get {
+                return ResourceManager.GetString("consent.gabber.submit", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_title_control {
+            get {
+                return ResourceManager.GetString("consent.gabber.title.control", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_body_control {
+            get {
+                return ResourceManager.GetString("consent.gabber.body.control", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_title_decision {
+            get {
+                return ResourceManager.GetString("consent.gabber.title.decision", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_body_decision {
+            get {
+                return ResourceManager.GetString("consent.gabber.body.decision", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_consent_type_public_full {
+            get {
+                return ResourceManager.GetString("consent.gabber.consent.type.public.full", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_consent_type_public_brief {
+            get {
+                return ResourceManager.GetString("consent.gabber.consent.type.public.brief", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_consent_type_members_full {
+            get {
+                return ResourceManager.GetString("consent.gabber.consent.type.members.full", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_consent_type_members_brief {
+            get {
+                return ResourceManager.GetString("consent.gabber.consent.type.members.brief", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_consent_type_private_full {
+            get {
+                return ResourceManager.GetString("consent.gabber.consent.type.private.full", resourceCulture);
+            }
+        }
+        
+        public static string consent_gabber_consent_type_private_brief {
+            get {
+                return ResourceManager.GetString("consent.gabber.consent.type.private.brief", resourceCulture);
+            }
+        }
+        
+        public static string conversation_consent_gabber_submit {
+            get {
+                return ResourceManager.GetString("conversation.consent.gabber.submit", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_title {
+            get {
+                return ResourceManager.GetString("consent.summary.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_subtitle {
+            get {
+                return ResourceManager.GetString("consent.summary.subtitle", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_project_title {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.project.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_participants_title {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.participants.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_participants_desc {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.participants.desc", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_research_title {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.research.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_research_desc {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.research.desc", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_conversation_title {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.conversation.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_conversation_desc {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.conversation.desc", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_embargo_title {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.embargo.title", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_content_embargo_desc {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.content.embargo.desc", resourceCulture);
+            }
+        }
+        
+        public static string consent_summary_screen_action {
+            get {
+                return ResourceManager.GetString("consent.summary.screen.action", resourceCulture);
             }
         }
         

@@ -21,6 +21,8 @@ using Android.Views.Animations;
 using System.Linq;
 using Firebase.Analytics;
 using Android.Content.PM;
+using Android.Preferences;
+using Android.Support.V4.View;
 
 namespace Gabber
 {
@@ -44,6 +46,8 @@ namespace Gabber
         string InterviewSessionID;
         // Which project are we recording an interview for?
         int SelectedProjectID;
+        // The consent chosen by participants about to Gabber
+        string ConsentType;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
@@ -60,6 +64,7 @@ namespace Gabber
             InterviewSessionID = Guid.NewGuid().ToString();
 
             var _prefs = Android.Preferences.PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
+            ConsentType = _prefs.GetString("SESSION_CONSENT", "");
             SelectedProjectID = _prefs.GetInt("SelectedProjectID", 0);
             var selectedProject = Queries.ProjectById(SelectedProjectID);
 
@@ -72,7 +77,7 @@ namespace Gabber
             promptRecyclerView.SetAdapter(adapter);
 
 			var record = FindViewById<FloatingActionButton>(Resource.Id.start);
-            record.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Color.LightGray);
+            ViewCompat.SetBackgroundTintList(record, Android.Content.Res.ColorStateList.ValueOf(Color.LightGray));
             record.Enabled = false;
 			var timer = FindViewById<TextView>(Resource.Id.timer);
             timer.SetTextColor(Color.LightGray);
@@ -160,7 +165,7 @@ namespace Gabber
             if (themes.FindAll((p) => p.SelectionState != Prompt.SelectedState.never).Count == 1) {
                 var record = FindViewById<FloatingActionButton>(Resource.Id.start);
                 record.SetImageResource(Resource.Drawable.stop_recording);
-                record.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(Color.White);
+                ViewCompat.SetBackgroundTintList(record, Android.Content.Res.ColorStateList.ValueOf(Color.White));
                 record.Enabled = true;
                 FindViewById<TextView>(Resource.Id.timer).SetTextColor(Color.White);
                 recordButton.Visibility = ViewStates.Visible;
@@ -228,6 +233,7 @@ namespace Gabber
 
             var InterviewSession = new InterviewSession
             {
+                ConsentType = ConsentType,
                 SessionID = InterviewSessionID,
                 RecordingURL = _path,
                 CreatedAt = DateTime.Now,
@@ -242,6 +248,10 @@ namespace Gabber
             };
 
             Queries.AddInterviewSession(InterviewSession);
+            // Now the session has been stored to the database we no longer need it
+            var _prefs = PreferenceManager.GetDefaultSharedPreferences(ApplicationContext);
+            _prefs.Edit().Remove("SESSION_CONSENT").Commit();
+            _prefs.Edit().PutBoolean("SESSION_RECORDED", true).Commit();
 		}
 
 		void StartRecording()

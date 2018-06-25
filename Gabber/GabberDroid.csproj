@@ -201,6 +201,9 @@
     <Compile Include="Fragments\About.cs" />
     <Compile Include="Activities\RegisterVerification.cs" />
     <Compile Include="Activities\VerifyEmail.cs" />
+    <Compile Include="Activities\ResearchConsent.cs" />
+    <Compile Include="Activities\ConversationConsent.cs" />
+    <Compile Include="Activities\ConsentSummary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -272,6 +275,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\add_person_white.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\add_person_white.png" />
     <AndroidResource Include="Resources\drawable-nodpi\onboarding_parts.png" />
+    <AndroidResource Include="Resources\layout\consent_research.axml" />
+    <AndroidResource Include="Resources\layout\consent_conversation.axml" />
+    <AndroidResource Include="Resources\layout\consent_summary.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\values-v21\" />

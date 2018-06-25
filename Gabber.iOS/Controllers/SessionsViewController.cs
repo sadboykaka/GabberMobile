@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CoreText;
 using Foundation;
 using Gabber.iOS.Helpers;
 using Gabber.iOS.ViewSources;
@@ -44,17 +45,21 @@ namespace Gabber.iOS
             base.ViewDidAppear(animated);
             TabBarController.Title = StringResources.sessions_ui_title;
 
-            if (Sessions.Count == 1)
+            var prefs = NSUserDefaults.StandardUserDefaults;
+            if (prefs.BoolForKey("SESSION_RECORDED"))
             {
-                var prefs = NSUserDefaults.StandardUserDefaults;
-                if (!prefs.BoolForKey("FIRST_RECORDING_DIALOG"))
-                {
-                    prefs.SetBool(true, "FIRST_RECORDING_DIALOG");
-                    PresentViewController(new MessageDialog().BuildErrorMessageDialog(
-                        StringResources.debriefing_ui_page_first_title,
-                        StringResources.debriefing_ui_page_first_content), true, null);
-                }
-            }
+                var session = Queries.LastInterviewSession;
+                var _content = string.Format(
+                    StringResources.debriefing_ui_page_first_content,
+                    Queries.ProjectById(session.ProjectID).Title,
+                    session.ConsentType
+                );
+
+                prefs.SetBool(false, "SESSION_RECORDED");
+                var dialog = new MessageDialog().BuildErrorMessageDialog(StringResources.debriefing_ui_page_first_title, "");
+                dialog.SetValueForKey(ResearchConsent.BuildFromHTML(_content), new NSString("attributedMessage"));
+                PresentViewController(dialog, true, null);
+             }
 		}
 
         // Index is optional such that the method could be used onSelected(item)
